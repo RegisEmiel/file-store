@@ -1,0 +1,55 @@
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                        System.out.println("Можете писать сообщения клиенту:");
+                        while (true) {
+                            String msg = scanner.nextLine();
+                            out.writeUTF(msg);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            socket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
+			
+			
+			
+			
+			
+			////////////////
+			
+			
+			           try
+            {
+                out.writeUTF("13370*0*0228.");
+                System.out.println("Successfully connected!");
+
+                while (true)
+                {
+                    String string = in.readUTF();
+                    if (!string.equalsIgnoreCase("Server:\t" + "/disconnect"))
+                    {
+                        System.out.println(string);
+                    }
+                    if (string.contains("."))
+                    {
+                        do {
+                            System.out.print("Client:\t");
+                            string = scanner.nextLine();
+                            out.writeUTF("Client:\t" + string);
+                        } while (!string.contains(".") && !string.equalsIgnoreCase("/disconnect"));
+                    }
+                    if (string.equalsIgnoreCase("Server:\t" + "/disconnect") || string.equalsIgnoreCase("/disconnect"))
+                    {
+                        System.out.println("DISCONNECTED");
+                        break;
+                    }
+                }
