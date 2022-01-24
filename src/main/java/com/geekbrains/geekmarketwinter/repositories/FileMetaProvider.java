@@ -24,7 +24,7 @@ public class FileMetaProvider implements IFileMetaProvider {
 
     private static final String GET_FILE_COUNT_BY_NAME = "" +
             "select\n" +
-            "\tcount(q.hashcode) as file_count\n" +
+            "\tcount(q.id) as file_count\n" +
             "from winter_market.file_info_metadata as q\n" +
             "inner join ( \n" +
             "select\n" +
