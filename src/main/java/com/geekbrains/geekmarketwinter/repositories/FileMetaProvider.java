@@ -22,6 +22,9 @@ public class FileMetaProvider implements IFileMetaProvider {
     private static final String SAVE_FILE_META_DATA = "insert into winter_market.file_info_metadata (hashcode, filename, sub_type)\n" +
             "values (:hash, :finame, :subtype)";
 
+    // По имени файла находим хеш. Далее по этому хешу считаем количество записей.
+    // Когда такая запись одна можно удалять и файл и запись в БД.
+    // Когда записей больше 1, то удалять можно только ссылку
     private static final String GET_FILE_COUNT_BY_NAME = "" +
             "select\n" +
             "\tcount(q.id) as file_count\n" +
