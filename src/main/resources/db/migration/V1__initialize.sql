@@ -136,6 +136,16 @@ CREATE TABLE orders_item (
 
 SET FOREIGN_KEY_CHECKS = 1;
 
+DROP TABLE IF EXISTS file_info_metadata;
+
+CREATE TABLE file_info_metadata (
+  id                    INT(11) NOT NULL AUTO_INCREMENT,
+  hashcode              varchar(255),
+  filename				text,
+  sub_type				int,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 INSERT INTO roles (name)
 VALUES
 ('ROLE_EMPLOYEE'), ('ROLE_MANAGER'), ('ROLE_ADMIN');
